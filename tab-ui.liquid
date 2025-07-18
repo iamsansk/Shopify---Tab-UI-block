@@ -1,0 +1,72 @@
+<div class="product-tabs">
+  <div class="tab-buttons">
+    <button class="tab-link active" data-tab="description">Description</button>
+    <button class="tab-link" data-tab="ingredients">Ingredients</button>
+    <button class="tab-link" data-tab="allergens">Allergens</button>
+  </div>
+
+  <div class="tab-content active" id="description">
+    {{ product.description }}
+  </div>
+
+  <div class="tab-content" id="ingredients">
+    <p>{{ product.metafields.custom.ingredients | metafield_text }}</p>
+  </div>
+
+  <div class="tab-content" id="allergens">
+    <p>{{ product.metafields.custom.allergens | metafield_text }}</p>
+  </div>
+</div>
+
+<style>
+  .tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #f3f3f3;
+  }
+
+  .tab-link {
+    padding: 1.2rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    flex: 1;
+    /* background: rgba(255,255,255,0.15); */
+    background: transparent;
+    color: #fff;
+  }
+
+  .tab-link.active {
+    background-color: #f3f3f3;
+    color: #c92127;
+    border-radius: px;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 0.5rem;
+    text-align: justify;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabLinks = document.querySelectorAll(".tab-link");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabLinks.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabLinks.forEach((btn) => btn.classList.remove("active"));
+        tabContents.forEach((tab) => tab.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+  });
+</script>
