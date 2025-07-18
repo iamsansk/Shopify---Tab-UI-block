@@ -1,0 +1,23 @@
+// Update the below code in main-product.liquid schema.
+
+{
+      "type": "tab_ui",
+      "name": "Tab UI",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredients",
+          "label": "Ingredients"
+        },
+        {
+          "type": "textarea",
+          "id": "benifits",
+          "label": "Benifits"
+        }
+      ]
+    }
